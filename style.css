@@ -1,0 +1,256 @@
+/* Общие стили */
+body {
+    background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%); /* Мягкий градиент */
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    overflow-x: hidden;
+}
+
+/* Заголовок */
+.main-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 3rem;
+    position: relative;
+    animation: slideIn 1s ease-out;
+}
+
+.main-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #3498db;
+    border-radius: 2px;
+}
+
+/* Контейнер таблицы */
+.table-container {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 1rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.table-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Стили таблицы */
+.table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0 10px; /* Пространство между строками */
+}
+
+.table thead th {
+    background: #3498db;
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 15px;
+    border: none;
+}
+
+.table tbody tr {
+    background: #f9fbfd; /* Очень светлый фон для строк */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: rowFadeIn 0.5s ease forwards;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.table tbody tr:hover {
+    background: #e6f0fa;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table tbody td {
+    padding: 15px;
+    vertical-align: middle;
+    border: none;
+    color: #2c3e50; /* Темный текст для контраста */
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+/* Развернутая строка */
+.table tbody tr.expanded {
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    animation: expandFade 0.5s ease;
+}
+
+.table tbody tr.expanded td {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+.table tbody tr.expanded td::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: #3498db;
+}
+
+/* Статус задачи */
+.circle-status {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    vertical-align: middle;
+    margin-right: 8px;
+    transition: all 0.3s ease;
+}
+
+.status-green { background: #27ae60; }
+.status-yellow { background: #f1c40f; }
+.status-red { background: #e74c3c; }
+
+/* Загрузка */
+.loading td {
+    text-align: center;
+    padding: 2rem;
+    color: #3498db;
+    font-size: 1.2rem;
+    font-style: italic;
+    animation: pulse 1.5s infinite;
+}
+
+.loading .spinner-border {
+    border-color: #3498db;
+    border-right-color: transparent;
+}
+
+/* Развернутые данные */
+.expanded p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 500;
+    position: relative;
+    padding-left: 20px;
+}
+
+.expanded p::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: #3498db;
+    font-weight: 700;
+}
+
+.expanded p strong {
+    color: #3498db;
+}
+
+/* Анимации */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes rowFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes expandFade {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .table thead {
+        display: none;
+    }
+
+    .table tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-radius: 10px;
+        background: #f9fbfd;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .table tbody td {
+        display: block;
+        text-align: right;
+        padding: 10px 15px;
+        border-bottom: 1px solid #e6e6e6;
+        position: relative;
+    }
+
+    .table tbody td:before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        font-weight: 600;
+        color: #3498db;
+        text-transform: uppercase;
+    }
+
+    .table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .table tbody tr.expanded {
+        background: #ffffff;
+    }
+
+    .table tbody tr.expanded td {
+        text-align: left;
+    }
+
+    .table tbody tr.expanded td:before {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .table tbody td {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .expanded p {
+        font-size: 1rem;
+    }
+}
