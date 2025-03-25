@@ -1,5 +1,7 @@
 ![image](https://github.com/user-attachments/assets/daf0145a-87f4-4f91-8eab-16f680726e9d)
 ![image](https://github.com/user-attachments/assets/f2465d0f-4b31-4a2c-bc63-ec3890b96c07)
+
+1. Project Overview
 This is a simple JavaScript application that demonstrates interaction with the AmoCRM API from the frontend without using a backend server. The project showcases authentication, token refreshing, and retrieving deal data from AmoCRM.
 
 2. Development Steps
