@@ -5,6 +5,7 @@
 This is a simple JavaScript application that demonstrates interaction with the AmoCRM API from the frontend without using a backend server. The project showcases authentication, token refreshing, and retrieving deal data from AmoCRM.
 
 2. Development Steps
+
 2.1. Setting Up the Integration
 An integration was created and connected in the AmoCRM personal account.
 
